@@ -72,30 +72,30 @@ class Node(object):
     def __str__(self):
         return str(self.value)
         
-        
-class TestLinkedList(unittest.TestCase):
-    def setUp(self):
-        node1 = Node(10)
-        node2 = Node(20, node1, None)
-        node3 = Node(30, node2, None)
-        node4 = Node(40, node3, None)
-        node5 = Node(50, node4, None)
-        node6 = Node(60, node5, None)
-        node7 = Node(70, node6, None)
-        node8 = Node(80, node7, None)
-        node9 = Node(90, node8, None)
-        
-        node1.next = node2
-        node2.next = node3
-        node3.next = node4
-        node4.next = node5
-        node5.next = node6
-        node6.next = node7
-        node7.next = node8
-        node8.next = node9
-        
-        self.linkedlist = LinkedList(node1, node9)
-        
-    
-    def tearDown(self):
-        del node1, node2, node3, node4, node5,
+###
+#class TestLinkedList(unittest.TestCase):
+#    def setUp(self):
+#        node1 = Node(10)
+#        node2 = Node(20, node1, None)
+#        node3 = Node(30, node2, None)
+#        node4 = Node(40, node3, None)
+#        node5 = Node(50, node4, None)
+#        node6 = Node(60, node5, None)
+#        node7 = Node(70, node6, None)
+#        node8 = Node(80, node7, None)
+#        node9 = Node(90, node8, None)
+#        
+#        node1.next = node2
+#        node2.next = node3
+#        node3.next = node4
+#        node4.next = node5
+#        node5.next = node6
+#        node6.next = node7
+#        node7.next = node8
+#        node8.next = node9
+#        
+#        self.linkedlist = LinkedList(node1, node9)
+#        
+#    
+#    def tearDown(self):
+#        del node1, node2, node3, node4, node5,
