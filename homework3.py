@@ -72,30 +72,53 @@ class Node(object):
     def __str__(self):
         return str(self.value)
         
-###
-#class TestLinkedList(unittest.TestCase):
-#    def setUp(self):
-#        node1 = Node(10)
-#        node2 = Node(20, node1, None)
-#        node3 = Node(30, node2, None)
-#        node4 = Node(40, node3, None)
-#        node5 = Node(50, node4, None)
-#        node6 = Node(60, node5, None)
-#        node7 = Node(70, node6, None)
-#        node8 = Node(80, node7, None)
-#        node9 = Node(90, node8, None)
-#        
-#        node1.next = node2
-#        node2.next = node3
-#        node3.next = node4
-#        node4.next = node5
-#        node5.next = node6
-#        node6.next = node7
-#        node7.next = node8
-#        node8.next = node9
-#        
-#        self.linkedlist = LinkedList(node1, node9)
-#        
-#    
-#    def tearDown(self):
-#        del node1, node2, node3, node4, node5,
+        
+class TestLinkedList(unittest.TestCase):
+    def setUp(self):
+        self.node1 = Node(10)
+        self.node2 = Node(20, self.node1, None)
+        self.node3 = Node(30, self.node2, None)
+        
+        self.node1.next = self.node2
+        self.node2.next = self.node3
+        
+        self.linkedlist = LinkedList(self.node1, self.node3)
+        
+    
+    def tearDown(self):
+        del self.node1, self.node2, self.node3
+        del self.linkedlist
+    
+    
+    def testGet(self):
+        self.assertEqual(self.linkedlist.get(1), 10)
+        self.assertEqual(self.linkedlist.get(2), 20)
+        self.assertEqual(self.linkedlist.get(3), 30)
+    
+    
+    def testPut(self):
+        self.linkedlist.put(2, 666)
+        self.assertEqual(self.linkedlist.get(1), 10)
+        self.assertEqual(self.linkedlist.get(2), 666)
+        self.assertEqual(self.linkedlist.get(3), 20)
+        self.assertEqual(self.linkedlist.get(4), 30)
+        
+    def testDelete(self):
+        self.linkedlist.delete(2)
+        self.assertEqual(self.linkedlist.get(1), 10)
+        self.assertEqual(self.linkedlist.get(2), 30)
+        
+    def testIndexOf(self):
+        self.assertEqual(self.linkedlist.indexOf(10), 1)
+        self.assertEqual(self.linkedlist.indexOf(20), 2)
+        self.assertEqual(self.linkedlist.indexOf(30), 3)
+        
+    def testSize(self):
+        self.assertEqual(self.linkedlist.size(), 3)
+        self.linkedlist.put(2, 666)
+        self.assertEqual(self.linkedlist.size(), 4)
+        self.linkedlist.delete(2)
+        self.assertEqual(self.linkedlist.size(), 3)
+    
+if __name__ == '__main__':
+    unittest.main()
